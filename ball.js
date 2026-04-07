@@ -7,7 +7,7 @@ function Ball() {
     this.color = "purple";
     this.force = 0;
     this.vx = 2;
-    this.vy = 2; // <-- THIS WAS THE ISSUE
+    this.vy = 2; 
 
     this.draw = function() {
         ctx.beginPath();
