@@ -25,9 +25,35 @@ function Ball() {
     };
 
     this.move = function() {
-        this.x += this.vx;
-        this.y += this.vy;
-    };
+    this.x += this.vx;
+    this.y += this.vy;
+
+    var radius = this.width / 2;
+
+    // Right wall
+    if (this.x + radius > canvas.width) {
+        this.x = canvas.width - radius;
+        this.vx *= -1;
+    }
+
+    // Left wall
+    if (this.x - radius < 0) {
+        this.x = radius;
+        this.vx *= -1;
+    }
+
+    // Bottom wall
+    if (this.y + radius > canvas.height) {
+        this.y = canvas.height - radius;
+        this.vy *= -1;
+    }
+
+    // Top wall
+    if (this.y - radius < 0) {
+        this.y = radius;
+        this.vy *= -1;
+    }
+};
 }
 
 // Canvas setup
