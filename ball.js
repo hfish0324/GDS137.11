@@ -7,7 +7,7 @@ function Ball() {
     this.color = "purple";
     this.force = 0;
     this.vx = 2;
-    this.vy = 2; 
+    this.vy = 2;
 
     this.draw = function() {
         ctx.beginPath();
@@ -34,24 +34,28 @@ function Ball() {
         if (this.x + radius > canvas.width) {
             this.x = canvas.width - radius;
             this.vx *= -1;
+            counter.increase();
         }
 
         // Left wall
         if (this.x - radius < 0) {
             this.x = radius;
             this.vx *= -1;
+            counter.increase();
         }
 
         // Bottom wall
         if (this.y + radius > canvas.height) {
             this.y = canvas.height - radius;
             this.vy *= -1;
+            counter.increase();
         }
 
         // Top wall
         if (this.y - radius < 0) {
             this.y = radius;
             this.vy *= -1;
+            counter.increase();
         }
     };
 }
@@ -69,6 +73,7 @@ function update() {
 
     ball.move();
     ball.draw();
+    counter.draw(); // draw bounce counter
 
     requestAnimationFrame(update);
 }
